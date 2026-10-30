@@ -117,10 +117,10 @@ body {
   color: var(--aura-ink);
 }
 
-/* Hacer que los fondos de secciones por defecto permitan ver el mesh ambiental */
+/* Hacer que los fondos de secciones por defecto permitan ver el mesh ambiental sin capas blancas debajo */
 .shopify-section:not(.header-section) .section-background {
-  background: rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(4px);
+  background: transparent !important;
+  backdrop-filter: none !important;
 }
 
 /* ==========================================================================
@@ -346,10 +346,12 @@ p,
 }
 
 /* Píldora superior de colección en el Hero */
-.hero__content-wrapper > .text-block:first-child {
+.hero__content-wrapper > .text-block.text-block--background,
+.hero__content-wrapper > .text-block:first-child.text-block--background {
   backdrop-filter: var(--glass-blur-sm);
   -webkit-backdrop-filter: var(--glass-blur-sm);
   border: 1px solid rgba(244, 114, 182, 0.45);
+  border-radius: 999px !important;
   box-shadow: var(--glass-shadow-sm);
 }
 
@@ -534,10 +536,11 @@ slideshow-arrows .slideshow-control:hover {
   background: var(--glass-bg-card);
   backdrop-filter: var(--glass-blur-md);
   -webkit-backdrop-filter: var(--glass-blur-md);
-  border-radius: 22px;
+  border-radius: 24px !important;
   border: 1px solid var(--glass-border-light);
   box-shadow: var(--glass-shadow-md), var(--glass-highlight-inset);
   padding: 12px;
+  overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease,
@@ -553,10 +556,18 @@ slideshow-arrows .slideshow-control:hover {
     inset 0 1px 2px rgba(255, 255, 255, 0.95);
 }
 
+.product-card .product-card__content {
+  border-radius: 18px !important;
+}
+
 .product-card .card-gallery,
+.product-card slideshow-container,
+.product-card slideshow-slide,
+.product-card .product-media-container,
+.product-card .product-media,
 .collection-card__image {
-  border-radius: 16px !important;
-  overflow: hidden;
+  border-radius: 18px !important;
+  overflow: hidden !important;
   background: linear-gradient(
     145deg,
     rgba(252, 231, 243, 0.45),
@@ -567,6 +578,7 @@ slideshow-arrows .slideshow-control:hover {
 
 .product-card .card-gallery img,
 .collection-card__image img {
+  border-radius: 18px !important;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -748,6 +760,7 @@ accordion-custom details[open],
   backdrop-filter: var(--glass-blur-sm);
   -webkit-backdrop-filter: var(--glass-blur-sm);
   border: 1px solid var(--glass-border-light);
+  border-radius: 18px !important;
   box-shadow: var(--glass-shadow-sm), var(--glass-highlight-inset);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
@@ -758,30 +771,46 @@ accordion-custom details[open],
   box-shadow: var(--glass-shadow-md);
 }
 
-/* Tarjetas Bento Grid de Ventajas en Página de Inicio */
-.group-block.border-style {
+/* Asegurar que los contenedores de grupo sin borde (cabeceras de sección como "Nuestros Favoritos",
+   filas contenedoras de Bento Grid, cabeceras de producto y envoltorios de insignias) sean 100% transparentes */
+.group-block[style*='--border-style: none'],
+.group-block:has(.group-block),
+.section-resource-list__header .group-block,
+.product-details .group-block,
+.footer-content .group-block {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Tarjetas individuales Bento Grid de Ventajas en Página de Inicio (solo las que tienen borde sólido activo) */
+.group-block[style*='--border-style: solid']:not(:has(.group-block)) {
   background: var(--glass-bg-card) !important;
   backdrop-filter: var(--glass-blur-md);
   -webkit-backdrop-filter: var(--glass-blur-md);
   border: 1px solid var(--glass-border-light) !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
   box-shadow: var(--glass-shadow-md), var(--glass-highlight-inset);
   transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.32s ease;
 }
 
-.group-block.border-style:hover {
+.group-block[style*='--border-style: solid']:not(:has(.group-block)):hover {
   transform: translateY(-5px);
   border-color: var(--glass-border-pink) !important;
   box-shadow: var(--glass-shadow-lg), var(--glass-highlight-inset);
 }
 
-.group-block.border-style h4 {
+.group-block[style*='--border-style: solid']:not(:has(.group-block)) h4 {
   color: var(--aura-ink);
   margin-bottom: 0.4rem;
 }
 
-.group-block.border-style p {
+.group-block[style*='--border-style: solid']:not(:has(.group-block)) p {
   color: var(--aura-ink-muted);
   font-size: 0.925rem;
 }
