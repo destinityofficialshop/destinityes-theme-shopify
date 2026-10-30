@@ -1,0 +1,839 @@
+/* ==========================================================================
+   AURA GLASSMORPHIC THEME — ROSA, BLANCO & LILA CLARO
+   Custom Design System & Typography Upgrade for Shopify Horizon
+   ========================================================================== */
+
+:root {
+  /* Paleta Destacada: Rosa, Blanco, Lila Claro */
+  --aura-white: #ffffff;
+  --aura-milk: #fdfbff;
+  --aura-pink-soft: #fce7f3;
+  --aura-pink-light: #fbcfe8;
+  --aura-pink: #f472b6;
+  --aura-pink-vibrant: #ec4899;
+  --aura-pink-deep: #db2777;
+  --aura-lilac-soft: #f3e8ff;
+  --aura-lilac-light: #e9d5ff;
+  --aura-lilac: #d8b4fe;
+  --aura-lilac-medium: #c084fc;
+  --aura-lilac-deep: #9333ea;
+  --aura-ink: #2a1836;
+  --aura-ink-muted: #6b537b;
+
+  /* Superficies Glassmorphic */
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-bg-medium: rgba(255, 255, 255, 0.64);
+  --glass-bg-soft: rgba(255, 255, 255, 0.48);
+  --glass-bg-tinted: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(252, 231, 243, 0.52) 50%,
+    rgba(243, 232, 255, 0.62) 100%
+  );
+  --glass-bg-card: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.84) 0%,
+    rgba(255, 255, 255, 0.62) 55%,
+    rgba(243, 232, 255, 0.55) 100%
+  );
+  --glass-bg-drawer: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(253, 244, 255, 0.88) 55%,
+    rgba(243, 232, 255, 0.86) 100%
+  );
+
+  /* Bordes y Brillos de Cristal */
+  --glass-border-light: rgba(255, 255, 255, 0.88);
+  --glass-border-lilac: rgba(216, 180, 254, 0.48);
+  --glass-border-pink: rgba(244, 114, 182, 0.45);
+  --glass-highlight-inset: inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(233, 213, 255, 0.25);
+
+  /* Sombras Coloreadas Suaves */
+  --glass-shadow-sm: 0 4px 16px -2px rgba(192, 132, 252, 0.1),
+    0 2px 6px -1px rgba(244, 114, 182, 0.06);
+  --glass-shadow-md: 0 12px 32px -6px rgba(192, 132, 252, 0.14),
+    0 4px 14px -2px rgba(244, 114, 182, 0.1);
+  --glass-shadow-lg: 0 22px 48px -10px rgba(236, 72, 153, 0.18),
+    0 10px 24px -6px rgba(192, 132, 252, 0.18);
+  --glass-shadow-button: 0 8px 24px -4px rgba(236, 72, 153, 0.36),
+    0 4px 12px -2px rgba(192, 132, 252, 0.28);
+
+  /* Desenfoque (Blur) */
+  --glass-blur-sm: blur(10px) saturate(160%);
+  --glass-blur-md: blur(18px) saturate(180%);
+  --glass-blur-lg: blur(26px) saturate(190%);
+
+  /* Gradientes de Marca */
+  --aura-gradient-primary: linear-gradient(
+    135deg,
+    #ec4899 0%,
+    #f472b6 48%,
+    #c084fc 100%
+  );
+  --aura-gradient-primary-hover: linear-gradient(
+    135deg,
+    #db2777 0%,
+    #ec4899 45%,
+    #a855f7 100%
+  );
+  --aura-gradient-pastel: linear-gradient(
+    135deg,
+    #fce7f3 0%,
+    #ffffff 50%,
+    #e9d5ff 100%
+  );
+
+  /* Tipografía Mejorada: Editorial + Geométrica Moderna */
+  --font-heading--family: 'Playfair Display', var(--font-heading--family, Georgia, serif);
+  --font-subheading--family: 'Plus Jakarta Sans', var(--font-subheading--family, sans-serif);
+  --font-body--family: 'Plus Jakarta Sans', var(--font-body--family, sans-serif);
+  --font-accent--family: 'Plus Jakarta Sans', var(--font-accent--family, sans-serif);
+  --font-paragraph--family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ==========================================================================
+   1. FONDO AMBIENTAL MESH (ROSA, BLANCO Y LILA CLARO)
+   ========================================================================== */
+
+body {
+  background-color: var(--aura-milk);
+  background-image:
+    radial-gradient(at 8% 12%, rgba(252, 231, 243, 0.85) 0px, transparent 48%),
+    radial-gradient(at 92% 18%, rgba(233, 213, 255, 0.85) 0px, transparent 50%),
+    radial-gradient(at 50% 48%, rgba(255, 255, 255, 0.95) 0px, transparent 55%),
+    radial-gradient(at 15% 82%, rgba(233, 213, 255, 0.72) 0px, transparent 52%),
+    radial-gradient(at 88% 85%, rgba(251, 207, 232, 0.75) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--aura-ink);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(244, 114, 182, 0.25);
+  color: var(--aura-ink);
+}
+
+/* Hacer que los fondos de secciones por defecto permitan ver el mesh ambiental */
+.shopify-section:not(.header-section) .section-background {
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(4px);
+}
+
+/* ==========================================================================
+   2. TIPOGRAFÍA EDITORIAL Y JERARQUÍA VISUAL
+   ========================================================================== */
+
+h1,
+.h1.h1,
+.text-block.h1 > *,
+h2,
+.h2.h2,
+.text-block.h2 > *,
+h3,
+.h3.h3,
+.text-block.h3 > * {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+h4,
+.h4.h4,
+.text-block.h4 > *,
+h5,
+.h5.h5,
+.text-block.h5 > *,
+h6,
+.h6.h6,
+.text-block.h6 > * {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+body,
+p,
+.paragraph:not(.button),
+.paragraph > *,
+.rte {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.005em;
+}
+
+.section-resource-list__header h3,
+.section-resource-list__header h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  color: var(--aura-ink);
+}
+
+/* ==========================================================================
+   3. BARRA DE ANUNCIOS Y HEADER GLASSMORPHIC
+   ========================================================================== */
+
+.announcement-bar {
+  background: linear-gradient(
+    90deg,
+    rgba(252, 231, 243, 0.78) 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(233, 213, 255, 0.82) 100%
+  ) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border-block-end: 1px solid var(--glass-border-light) !important;
+  box-shadow: 0 2px 12px rgba(192, 132, 252, 0.08);
+}
+
+.shopify-section:has(.announcement-bar) .section-background {
+  background: transparent !important;
+}
+
+.announcement-bar__text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--aura-ink);
+}
+
+/* Header principal de cristal esmerilado */
+#header-component .header__underlay-closed,
+[data-header-rows='single'] .header__underlay-closed {
+  background: rgba(255, 255, 255, 0.68) !important;
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border-bottom: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-sm), var(--glass-highlight-inset);
+}
+
+#header-component .header__underlay-open,
+[data-header-rows='single'] .header__underlay-open {
+  background: rgba(255, 255, 255, 0.86) !important;
+  backdrop-filter: var(--glass-blur-lg);
+  -webkit-backdrop-filter: var(--glass-blur-lg);
+  border-bottom: 1px solid var(--glass-border-lilac);
+  box-shadow: var(--glass-shadow-md);
+}
+
+/* Enlaces del menú con cápsula de cristal al pasar el ratón */
+.header-menu .menu-list__link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  padding-inline: 0.85rem;
+  padding-block: 0.45rem;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-menu .menu-list__link:hover,
+.header-menu .menu-list__link[aria-expanded='true'] {
+  background: linear-gradient(
+    135deg,
+    rgba(252, 231, 243, 0.72),
+    rgba(233, 213, 255, 0.72)
+  );
+  color: var(--aura-pink-deep);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.85),
+    0 4px 12px rgba(236, 72, 153, 0.1);
+}
+
+/* Selector de idioma/moneda (EUR / EN) estilo cápsula de cristal limpia */
+.dropdown-localization__button {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-lilac) !important;
+  border-radius: 999px !important;
+  padding: 0.35rem 0.85rem !important;
+  color: var(--aura-ink) !important;
+  box-shadow: var(--glass-shadow-sm) !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease !important;
+}
+
+.dropdown-localization__button:hover {
+  background: var(--aura-gradient-pastel) !important;
+  border-color: var(--glass-border-pink) !important;
+  color: var(--aura-pink-deep) !important;
+}
+
+/* Logo tipográfico con estilo refinado */
+.header-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Iconos de acción del header (búsqueda, cuenta, carrito) */
+.header-actions__action,
+.search-action button {
+  border-radius: 999px;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.header-actions__action:hover,
+.search-action button:hover {
+  background: rgba(252, 231, 243, 0.65);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+/* Burbuja contador del carrito en gradiente rosa-lila */
+.cart-bubble__background,
+.header-actions__cart-icon .cart-bubble {
+  background: var(--aura-gradient-primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
+}
+
+/* ==========================================================================
+   4. HERO BANNER CON PANEL GLASSMORPHIC
+   ========================================================================== */
+
+.hero {
+  border-radius: 0 0 28px 28px;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow-md);
+}
+
+.hero__media-grid .overlay {
+  background: linear-gradient(
+    145deg,
+    rgba(42, 24, 54, 0.28) 0%,
+    rgba(236, 72, 153, 0.22) 50%,
+    rgba(192, 132, 252, 0.32) 100%
+  ) !important;
+}
+
+.hero__content-wrapper {
+  z-index: 2;
+}
+
+.hero__content-wrapper > .text-block {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 16px 40px rgba(42, 24, 54, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.65);
+  border-radius: 24px;
+  padding: 1.5rem 2.25rem !important;
+  text-shadow: 0 2px 12px rgba(42, 24, 54, 0.2);
+}
+
+/* ==========================================================================
+   5. BOTONES GLASSMORPHIC & JOYA (EXCLUYENDO BOTONES UTILITARIOS/INVISIBLES)
+   ========================================================================== */
+
+/* IMPORTANTE: Excluimos .button-unstyled y controles internos como el zoom de imagen,
+   flechas de carrusel y botones de cantidad para no cubrir imágenes ni alterar iconos */
+.button:not(
+    .button-unstyled,
+    .button-secondary,
+    .close-button,
+    .slideshow-control,
+    .quantity-minus,
+    .quantity-plus,
+    .dropdown-localization__button,
+    .cart-items__remove,
+    .menu-drawer__back-button,
+    .predictive-search__close-modal-button,
+    .predictive-search__search-button,
+    .quick-add__button,
+    .product-media-container__zoom-button
+  ),
+button.shopify-payment-button__button--unbranded {
+  background: var(--aura-gradient-primary) !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  box-shadow: var(--glass-shadow-button),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55) !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.28s ease !important;
+}
+
+.button:not(
+    .button-unstyled,
+    .button-secondary,
+    .close-button,
+    .slideshow-control,
+    .quantity-minus,
+    .quantity-plus,
+    .dropdown-localization__button,
+    .cart-items__remove,
+    .menu-drawer__back-button,
+    .predictive-search__close-modal-button,
+    .predictive-search__search-button,
+    .quick-add__button,
+    .product-media-container__zoom-button
+  ):hover:not([disabled]),
+button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  background: var(--aura-gradient-primary-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -4px rgba(236, 72, 153, 0.48),
+    0 6px 16px -2px rgba(168, 85, 247, 0.36),
+    inset 0 1px 2px rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Asegurar que el botón de zoom sobre las imágenes de producto sea 100% transparente */
+.product-media-container__zoom-button {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Botones Secundarios y Personalizados (Cristal Esmerilado Blanco-Lila-Rosa) */
+.button-secondary:not(.button-unstyled, .slideshow-control),
+.button-custom:not(.button-unstyled, .slideshow-control) {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  color: var(--aura-ink) !important;
+  border-radius: 999px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 0 0 1.5px rgba(244, 114, 182, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    var(--glass-shadow-sm) !important;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.28s ease,
+    box-shadow 0.28s ease,
+    color 0.28s ease !important;
+}
+
+.button-secondary:not(.button-unstyled, .slideshow-control):hover:not([disabled]),
+.button-custom:not(.button-unstyled, .slideshow-control):hover:not([disabled]) {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(252, 231, 243, 0.88) 50%,
+    rgba(233, 213, 255, 0.9) 100%
+  ) !important;
+  color: var(--aura-pink-deep) !important;
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 1.5px rgba(236, 72, 153, 0.75),
+    0 12px 24px -4px rgba(236, 72, 153, 0.22),
+    0 4px 12px -2px rgba(192, 132, 252, 0.2) !important;
+}
+
+/* ==========================================================================
+   6. FLECHAS DE CARRUSEL (SLIDESHOW ARROWS) EN CRISTAL ESMERILADO
+   ========================================================================== */
+
+/* Desactivar mix-blend-mode: difference que invertía los colores a verde/azul oscuro */
+slideshow-arrows {
+  mix-blend-mode: normal !important;
+  padding-inline: 8px;
+}
+
+slideshow-arrows .slideshow-control {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  color: var(--aura-ink) !important;
+  box-shadow: 0 4px 14px rgba(42, 24, 54, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  transition: background 0.22s ease, color 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+}
+
+slideshow-arrows .slideshow-control:hover {
+  background: var(--aura-gradient-primary) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.38) !important;
+}
+
+/* ==========================================================================
+   7. TARJETAS DE PRODUCTO Y COLECCIÓN GLASSMORPHIC
+   ========================================================================== */
+
+.product-card,
+.collection-card,
+.predictive-search-results__card {
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border-radius: 22px;
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-md), var(--glass-highlight-inset);
+  padding: 12px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    background 0.35s ease !important;
+}
+
+.product-card:hover,
+.collection-card:hover,
+.predictive-search-results__card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(244, 114, 182, 0.65);
+  box-shadow: var(--glass-shadow-lg),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.product-card .card-gallery,
+.collection-card__image {
+  border-radius: 16px !important;
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    rgba(252, 231, 243, 0.45),
+    rgba(243, 232, 255, 0.45)
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.product-card .card-gallery img,
+.collection-card__image img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-card:hover .card-gallery img,
+.collection-card:hover .collection-card__image img {
+  transform: scale(1.04);
+}
+
+.product-card .product-grid__card {
+  gap: 8px;
+}
+
+.product-card product-title,
+.product-card [class*='product-title'] {
+  padding-inline: 6px;
+  padding-top: 6px;
+  font-weight: 600;
+  color: var(--aura-ink);
+}
+
+.product-card product-price,
+.product-card .price {
+  padding-inline: 6px;
+  padding-bottom: 4px;
+  font-weight: 700;
+  color: var(--aura-pink-deep);
+}
+
+/* Badges de Producto (Oferta / Agotado) con efecto cristal */
+.product-badges__badge {
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.22);
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em;
+  padding: 5px 12px !important;
+}
+
+.color-custom-badge-sale {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.88),
+    rgba(192, 132, 252, 0.88)
+  ) !important;
+  color: #ffffff !important;
+}
+
+.color-custom-badge-sold-out {
+  background: rgba(243, 232, 255, 0.85) !important;
+  color: var(--aura-ink) !important;
+}
+
+/* Botón Quick Add de cristal */
+button.quick-add__button {
+  background: rgba(255, 255, 255, 0.84) !important;
+  backdrop-filter: var(--glass-blur-md) !important;
+  -webkit-backdrop-filter: var(--glass-blur-md) !important;
+  border: 1px solid rgba(244, 114, 182, 0.5) !important;
+  color: var(--aura-pink-deep) !important;
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+}
+
+button.quick-add__button:hover {
+  background: var(--aura-gradient-primary) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* ==========================================================================
+   8. PÁGINA DE PRODUCTO (GALERÍA, DETALLES Y VARIANTES DE CRISTAL)
+   ========================================================================== */
+
+.product-information .product-details,
+[data-view-transition-type='product-details'] {
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-md), var(--glass-highlight-inset);
+  border-radius: 26px;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem) !important;
+}
+
+.product-information .product-media-container {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-sm);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.variant-option__button-label {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-lilac) !important;
+  border-radius: 999px !important;
+  box-shadow: var(--glass-shadow-sm);
+  transition: all 0.22s ease !important;
+}
+
+.variant-option__button-label:hover {
+  border-color: var(--aura-pink) !important;
+  background: rgba(252, 231, 243, 0.65) !important;
+  transform: translateY(-1px);
+}
+
+.variant-option__button-label:has(input:checked) {
+  background: var(--aura-gradient-primary) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.32) !important;
+}
+
+/* Selector de cantidad unificado estilo cápsula de cristal */
+quantity-selector-component,
+.quantity-selector {
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-lilac) !important;
+  border-radius: 999px !important;
+  box-shadow: var(--glass-shadow-sm);
+  overflow: hidden;
+}
+
+.quantity-selector :is(.quantity-minus, .quantity-plus) {
+  background: transparent !important;
+  color: var(--aura-ink) !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.quantity-selector :is(.quantity-minus, .quantity-plus):hover {
+  background: rgba(252, 231, 243, 0.65) !important;
+  color: var(--aura-pink-deep) !important;
+}
+
+.quantity-selector input[type='number'] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 600;
+  color: var(--aura-ink) !important;
+}
+
+/* Acordeones / Disclosures en página de producto */
+accordion-custom details,
+.disclosures details {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 16px;
+  padding-inline: 1.1rem;
+  margin-block-end: 0.65rem;
+  box-shadow: var(--glass-shadow-sm);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+accordion-custom details[open],
+.disclosures details[open] {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--glass-border-pink);
+}
+
+/* ==========================================================================
+   9. INPUTS, FORMULARIOS, BUSCADOR Y FILTROS GLASSMORPHIC
+   ========================================================================== */
+
+.field__input,
+input:not([type='checkbox'], [type='radio'], [type='range'], .quantity-selector input),
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.76) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-lilac) !important;
+  border-radius: 999px;
+  color: var(--aura-ink) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    0 4px 14px rgba(192, 132, 252, 0.08) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+}
+
+textarea {
+  border-radius: 20px !important;
+}
+
+.field__input:focus,
+input:not([type='checkbox'], [type='radio'], [type='range'], .quantity-selector input):focus,
+textarea:focus,
+select:focus {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: var(--aura-pink) !important;
+  box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.25),
+    0 8px 20px rgba(236, 72, 153, 0.12) !important;
+  outline: none !important;
+}
+
+.facets--horizontal .facets__panel,
+.facets__summary {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 999px;
+  padding-inline: 1rem;
+  padding-block: 0.45rem;
+  box-shadow: var(--glass-shadow-sm);
+  transition: all 0.22s ease;
+}
+
+.facets__summary:hover {
+  background: var(--aura-gradient-pastel);
+  border-color: var(--glass-border-pink);
+}
+
+/* ==========================================================================
+   10. DRAWERS (CARRITO, MENÚ LATERAL), MODALES Y POPOVERS DE CRISTAL
+   ========================================================================== */
+
+dialog.theme-drawer__dialog,
+.menu-drawer,
+.search-modal__content,
+.quick-add-modal__content,
+.facets__panel-content {
+  background: var(--glass-bg-drawer) !important;
+  backdrop-filter: var(--glass-blur-lg) !important;
+  -webkit-backdrop-filter: var(--glass-blur-lg) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  box-shadow: -12px 0 40px rgba(42, 24, 54, 0.14),
+    -4px 0 16px rgba(236, 72, 153, 0.1) !important;
+}
+
+dialog::backdrop {
+  background: rgba(42, 24, 54, 0.25) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.cart-drawer__summary,
+.cart-summary {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border-top: 1px solid var(--glass-border-light);
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 24px rgba(192, 132, 252, 0.1);
+}
+
+/* ==========================================================================
+   11. FOOTER GLASSMORPHIC & SUSCRIPCIÓN
+   ========================================================================== */
+
+footer,
+.shopify-section-group-footer-group {
+  position: relative;
+}
+
+.footer-content {
+  background: var(--glass-bg-tinted);
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-md), var(--glass-highlight-inset);
+  border-radius: 28px;
+  padding: clamp(2rem, 4vw, 3.25rem) !important;
+  margin-block: 1.5rem;
+}
+
+.email-signup__button {
+  background: var(--aura-gradient-primary) !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding-inline: 1.25rem !important;
+  margin: 4px !important;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.email-signup__button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.45) !important;
+}
+
+.social-links a,
+.footer-utilities .social-links__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--glass-bg-medium);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-sm);
+  color: var(--aura-ink) !important;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.social-links a:hover,
+.footer-utilities .social-links__link:hover {
+  background: var(--aura-gradient-primary);
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: var(--glass-shadow-button);
+}
+
+/* Scrollbar personalizada en rosa y lila claro */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f472b6, #c084fc);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ec4899, #a855f7);
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
