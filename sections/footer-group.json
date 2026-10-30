@@ -132,7 +132,7 @@
             "link_text_color": "",
             "display_type": "arrow",
             "label": "Suscribirme",
-            "integrated_button": true,
+            "integrated_button": false,
             "button_type_preset": "paragraph",
             "padding-block-start": 0,
             "padding-block-end": 0,
