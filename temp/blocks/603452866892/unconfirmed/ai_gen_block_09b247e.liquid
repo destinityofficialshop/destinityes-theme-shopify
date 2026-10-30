@@ -1,0 +1,150 @@
+{% doc %}
+  @prompt
+    Quiero añadir una cuenta atras para cuando se abra la tienda, ponle fondo transparente
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-launch-countdown-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 32px 20px;
+    color: {{ block.settings.text_color }};
+    background: transparent;
+    text-align: center;
+    font-family: inherit;
+  }
+
+  .ai-launch-countdown__title-{{ ai_gen_id }} {
+    margin: 0 0 12px;
+    color: inherit;
+    font-family: inherit;
+  }
+
+  .ai-launch-countdown__message-{{ ai_gen_id }} {
+    margin: 0 0 22px;
+    color: inherit;
+  }
+
+  .ai-launch-countdown__units-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ai-launch-countdown__unit-{{ ai_gen_id }} {
+    min-width: 78px;
+    padding: 14px 12px;
+    border: 1px solid {{ block.settings.text_color }};
+    border-radius: 12px;
+  }
+
+  .ai-launch-countdown__value-{{ ai_gen_id }} {
+    display: block;
+    font-size: clamp(24px, 5vw, 40px);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ai-launch-countdown__label-{{ ai_gen_id }} {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  .ai-launch-countdown__finished-{{ ai_gen_id }} {
+    margin: 20px 0 0;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 480px) {
+    .ai-launch-countdown-{{ ai_gen_id }} { padding: 26px 14px; }
+    .ai-launch-countdown__units-{{ ai_gen_id }} { gap: 8px; }
+    .ai-launch-countdown__unit-{{ ai_gen_id }} { min-width: 66px; padding: 12px 8px; }
+  }
+{% endstyle %}
+
+<launch-countdown-{{ ai_gen_id }}
+  class="ai-launch-countdown-{{ ai_gen_id }}"
+  data-target="{{ block.settings.launch_datetime | escape }}"
+  data-finished="{{ block.settings.finished_text | escape }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.heading != blank %}
+    <h2 class="ai-launch-countdown__title-{{ ai_gen_id }}">{{ block.settings.heading | escape }}</h2>
+  {% endif %}
+  {% if block.settings.message != blank %}
+    <p class="ai-launch-countdown__message-{{ ai_gen_id }}">{{ block.settings.message | escape }}</p>
+  {% endif %}
+  <div class="ai-launch-countdown__units-{{ ai_gen_id }}" role="timer" aria-live="off" aria-label="Cuenta atrás">
+    <div class="ai-launch-countdown__unit-{{ ai_gen_id }}"><span class="ai-launch-countdown__value-{{ ai_gen_id }}" data-days>--</span><span class="ai-launch-countdown__label-{{ ai_gen_id }}">Días</span></div>
+    <div class="ai-launch-countdown__unit-{{ ai_gen_id }}"><span class="ai-launch-countdown__value-{{ ai_gen_id }}" data-hours>--</span><span class="ai-launch-countdown__label-{{ ai_gen_id }}">Horas</span></div>
+    <div class="ai-launch-countdown__unit-{{ ai_gen_id }}"><span class="ai-launch-countdown__value-{{ ai_gen_id }}" data-minutes>--</span><span class="ai-launch-countdown__label-{{ ai_gen_id }}">Minutos</span></div>
+    <div class="ai-launch-countdown__unit-{{ ai_gen_id }}"><span class="ai-launch-countdown__value-{{ ai_gen_id }}" data-seconds>--</span><span class="ai-launch-countdown__label-{{ ai_gen_id }}">Segundos</span></div>
+  </div>
+  <p class="ai-launch-countdown__finished-{{ ai_gen_id }}" data-countdown-finished hidden></p>
+</launch-countdown-{{ ai_gen_id }}>
+
+<script>
+  (() => {
+    const elementName = 'launch-countdown-{{ ai_gen_id }}';
+    if (customElements.get(elementName)) return;
+    class LaunchCountdown extends HTMLElement {
+      connectedCallback() {
+        const target = new Date(this.dataset.target).getTime();
+        const unitContainer = this.querySelector('.ai-launch-countdown__units-{{ ai_gen_id }}');
+        const finished = this.querySelector('[data-countdown-finished]');
+        if (!Number.isFinite(target)) {
+          unitContainer.hidden = true;
+          finished.hidden = false;
+          finished.textContent = 'Configura una fecha y hora de apertura válidas.';
+          return;
+        }
+        const update = () => {
+          const remaining = target - Date.now();
+          if (remaining <= 0) {
+            unitContainer.hidden = true;
+            finished.hidden = false;
+            finished.textContent = this.dataset.finished || '¡La tienda ya está abierta!';
+            window.clearInterval(this.countdownInterval);
+            return;
+          }
+          const days = Math.floor(remaining / 86400000);
+          const hours = Math.floor((remaining % 86400000) / 3600000);
+          const minutes = Math.floor((remaining % 3600000) / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+          this.querySelector('[data-days]').textContent = String(days).padStart(2, '0');
+          this.querySelector('[data-hours]').textContent = String(hours).padStart(2, '0');
+          this.querySelector('[data-minutes]').textContent = String(minutes).padStart(2, '0');
+          this.querySelector('[data-seconds]').textContent = String(seconds).padStart(2, '0');
+        };
+        update();
+        this.countdownInterval = window.setInterval(update, 1000);
+      }
+      disconnectedCallback() {
+        window.clearInterval(this.countdownInterval);
+      }
+    }
+    customElements.define(elementName, LaunchCountdown);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Cuenta atrás apertura",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "La tienda abre pronto" },
+    { "type": "text", "id": "message", "label": "Mensaje", "default": "Estamos preparando algo especial. ¡Vuelve pronto!" },
+    { "type": "text", "id": "launch_datetime", "label": "Fecha y hora de apertura (ISO 8601)", "default": "2026-12-31T12:00:00+01:00" },
+    { "type": "text", "id": "finished_text", "label": "Mensaje al finalizar", "default": "¡La tienda ya está abierta!" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Ancho en escritorio", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#2a1836" }
+  ],
+  "presets": [{ "name": "Cuenta atrás apertura" }],
+  "tag": null,
+  "class": "launch-countdown-block"
+}
+{% endschema %}
