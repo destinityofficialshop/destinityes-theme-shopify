@@ -291,21 +291,46 @@ p,
 }
 
 /* ==========================================================================
-   4. HERO BANNER CON PANEL GLASSMORPHIC
+   4. HERO BANNER CON PANEL GLASSMORPHIC & FONDO AURORA (ROSA/BLANCO/LILA)
    ========================================================================== */
 
 .hero {
-  border-radius: 0 0 28px 28px;
+  border-radius: 0 0 32px 32px;
   overflow: hidden;
   box-shadow: var(--glass-shadow-md);
+}
+
+/* Si aún no se ha subido foto al Hero, ocultar la ilustración azul por defecto de Shopify
+   y mostrar un fondo Aurora Glass animado en Rosa, Blanco y Lila Claro */
+.hero__media-grid:has(svg.hero__media) {
+  background:
+    radial-gradient(circle at 18% 25%, rgba(244, 114, 182, 0.42) 0%, transparent 45%),
+    radial-gradient(circle at 82% 22%, rgba(192, 132, 252, 0.45) 0%, transparent 48%),
+    radial-gradient(circle at 50% 80%, rgba(251, 207, 232, 0.65) 0%, transparent 55%),
+    linear-gradient(135deg, #fce7f3 0%, #fdfbff 48%, #f3e8ff 100%) !important;
+  background-size: 140% 140% !important;
+  animation: auraHeroGradient 12s ease-in-out infinite alternate;
+}
+
+.hero__media-grid svg.hero__media {
+  opacity: 0 !important;
+}
+
+@keyframes auraHeroGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .hero__media-grid .overlay {
   background: linear-gradient(
     145deg,
-    rgba(42, 24, 54, 0.28) 0%,
-    rgba(236, 72, 153, 0.22) 50%,
-    rgba(192, 132, 252, 0.32) 100%
+    rgba(252, 231, 243, 0.35) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(233, 213, 255, 0.38) 100%
   ) !important;
 }
 
@@ -313,16 +338,19 @@ p,
   z-index: 2;
 }
 
-.hero__content-wrapper > .text-block {
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: var(--glass-blur-md);
-  -webkit-backdrop-filter: var(--glass-blur-md);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow: 0 16px 40px rgba(42, 24, 54, 0.16),
-    inset 0 1px 1px rgba(255, 255, 255, 0.65);
-  border-radius: 24px;
-  padding: 1.5rem 2.25rem !important;
-  text-shadow: 0 2px 12px rgba(42, 24, 54, 0.2);
+.hero__content-wrapper > .text-block:not(:first-child) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 !important;
+}
+
+/* Píldora superior de colección en el Hero */
+.hero__content-wrapper > .text-block:first-child {
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid rgba(244, 114, 182, 0.45);
+  box-shadow: var(--glass-shadow-sm);
 }
 
 /* ==========================================================================
@@ -392,6 +420,36 @@ button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
   box-shadow: none !important;
   border: none !important;
   border-radius: 0 !important;
+}
+
+/* Efecto Glow Shimmer (Destello de Luz Cristalino) en el botón Añadir al Carrito y CTA principal */
+.add-to-cart-button::after,
+.hero .button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: auraButtonShimmer 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes auraButtonShimmer {
+  0%,
+  65% {
+    left: -120%;
+  }
+  100% {
+    left: 160%;
+  }
 }
 
 /* Botones Secundarios y Personalizados (Cristal Esmerilado Blanco-Lila-Rosa) */
@@ -677,6 +735,55 @@ accordion-custom details[open],
 .disclosures details[open] {
   background: rgba(255, 255, 255, 0.8);
   border-color: var(--glass-border-pink);
+}
+
+/* Insignias de Confianza (Trust Badges) de Cristal en Ficha de Producto */
+.product-details .text-block--background {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(252, 231, 243, 0.48) 55%,
+    rgba(243, 232, 255, 0.65) 100%
+  ) !important;
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: var(--glass-shadow-sm), var(--glass-highlight-inset);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.product-details .text-block--background:hover {
+  transform: translateY(-2px);
+  border-color: var(--glass-border-pink);
+  box-shadow: var(--glass-shadow-md);
+}
+
+/* Tarjetas Bento Grid de Ventajas en Página de Inicio */
+.group-block.border-style {
+  background: var(--glass-bg-card) !important;
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border: 1px solid var(--glass-border-light) !important;
+  box-shadow: var(--glass-shadow-md), var(--glass-highlight-inset);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.32s ease;
+}
+
+.group-block.border-style:hover {
+  transform: translateY(-5px);
+  border-color: var(--glass-border-pink) !important;
+  box-shadow: var(--glass-shadow-lg), var(--glass-highlight-inset);
+}
+
+.group-block.border-style h4 {
+  color: var(--aura-ink);
+  margin-bottom: 0.4rem;
+}
+
+.group-block.border-style p {
+  color: var(--aura-ink-muted);
+  font-size: 0.925rem;
 }
 
 /* ==========================================================================
