@@ -1,6 +1,19 @@
 
 
-{% render 'text', block: block %}
+{% liquid
+  assign show_text = true
+  if block.settings.iphone_cases_only
+    assign show_text = false
+    assign product_tags = closest.product.tags
+    if product_tags contains 'Funda' and product_tags contains 'iPhone'
+      assign show_text = true
+    endif
+  endif
+%}
+
+{% if show_text %}
+  {% render 'text', block: block %}
+{% endif %}
 
 {% schema %}
 {
@@ -11,6 +24,12 @@
       "type": "richtext",
       "id": "text",
       "label": "t:settings.text"
+    },
+    {
+      "type": "checkbox",
+      "id": "iphone_cases_only",
+      "label": "Solo en fundas para iPhone",
+      "default": false
     },
     {
       "type": "header",

@@ -315,6 +315,7 @@
                 "trust_badge_1": {
                   "type": "text",
                   "settings": {
+                    "iphone_cases_only": true,
                     "text": "<p><strong>🛡️ Protección 360°</strong><br>Bordes antigolpes</p>",
                     "width": "100%",
                     "max_width": "none",
@@ -340,6 +341,7 @@
                 "trust_badge_2": {
                   "type": "text",
                   "settings": {
+                    "iphone_cases_only": true,
                     "text": "<p><strong>✨ Brillo Glow</strong><br>No amarillea</p>",
                     "width": "100%",
                     "max_width": "none",
