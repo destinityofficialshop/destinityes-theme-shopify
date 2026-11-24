@@ -15,7 +15,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>✨ COLECCIÓN GLOW & AESTHETIC</p>",
+            "text": "<p>Fundas y accesorios</p>",
             "text_color": "#db2777",
             "width": "fit-content",
             "max_width": "normal",
@@ -41,7 +41,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Viste tu iPhone con brillo propio</h1>",
+            "text": "<h1>Fundas para iPhone, joyas y accesorios</h1>",
             "text_color": "#2a1836",
             "width": "fit-content",
             "max_width": "normal",
@@ -67,7 +67,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Fundas translúcidas con acabado cristal, purpurina fina encapsulada y protección 360° contra caídas.</p>",
+            "text": "<p>Dale tu toque al iPhone y completa tu look con joyas y accesorios para el día a día.</p>",
             "text_color": "#2a1836",
             "width": "fit-content",
             "max_width": "normal",
@@ -93,7 +93,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Explorar colección ✨",
+            "label": "Ver catálogo",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -184,7 +184,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>Nuestros Favoritos ✨</h3>",
+                "text": "<h3>Destacados del catálogo</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -434,7 +434,7 @@
                 "bento_text_1": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>🛡️ Protección 360°</h4><p>Bordes reforzados en pantalla y cámara que absorben impactos y protegen de caídas diarias.</p>",
+                    "text": "<h4>📱 Fundas para iPhone</h4><p>Encuentra una funda que combine con tu estilo y sea compatible con tu modelo.</p>",
                     "width": "100%",
                     "max_width": "none",
                     "alignment": "left",
@@ -499,7 +499,7 @@
                 "bento_text_2": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>✨ Brillo Duradero</h4><p>Acabado glitter encapsulado y tratamiento anti-amarilleo para que luzca siempre como nueva.</p>",
+                    "text": "<h4>✨ Joyas y accesorios</h4><p>Descubre detalles para combinar con tus looks o regalar.</p>",
                     "width": "100%",
                     "max_width": "none",
                     "alignment": "left",
